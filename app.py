@@ -1,16 +1,8 @@
-from flask import Flask, request, jsonify  # Make sure 'request' is imported
+from flask import Flask, request, jsonify
 from leaf_analysis import analyze_leaf
 import os
-app = Flask(__name__, static_folder='static')
-from flask import Flask
-from whitenoise import WhiteNoise
-import os
-from leaf_analysis import analyze_leaf
 
 app = Flask(__name__, static_folder='static')
-app.wsgi_app = WhiteNoise(app.wsgi_app, root=app.static_folder)
-app.config['WHITENOISE_AUTOREFRESH'] = True
-app.config['WHITENOISE_USE_FINDERS'] = True
 
 @app.route('/')
 def serve_index():
